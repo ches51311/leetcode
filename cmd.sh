@@ -50,7 +50,9 @@ function testing
 
     files=(`find . -iname "*.py"`)
     if [ ! -z ${files[0]} ]; then
+      echo python3 $d$(basename ${files[0]})
       python3 ${files[0]}
+      echo ""
     fi
 
     popd > /dev/null
