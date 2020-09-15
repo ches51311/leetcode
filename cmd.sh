@@ -2,7 +2,7 @@
 
 function compiling
 {
-  for d in `ls -d */ | sort`; do
+  for d in `ls -d */ | sort -n`; do
     pushd $d >> /dev/null
     files=(`find . -iname "*.cpp"`)
     if [ ! -z ${files[0]} ];then
@@ -29,7 +29,7 @@ function compiling
 
 function testing
 {
-  for d in `ls -d */ | sort`; do
+  for d in `ls -d */ | sort -n`; do
     pushd $d >> /dev/null
 
     files=(`find . -iname "*.cpp"`)
@@ -62,7 +62,7 @@ function testing
 
 function cleaning
 {
-  for d in `ls -d */ | sort`; do
+  for d in `ls -d */ | sort -n`; do
     pushd $d >> /dev/null
     files=(`find . -iname "*.cpp"`)
     if [[ ! -z ${files[0]%%.cpp} && -f ${files[0]%%.cpp} ]];then
