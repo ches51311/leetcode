@@ -1,5 +1,6 @@
 # leetcode
 
+following command success on ubuntu
 
 ## Compiling question
 ```
