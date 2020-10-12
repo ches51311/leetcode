@@ -17,7 +17,7 @@ public:
             *pt1 = (*pt1)->next;
             t2->next = (*pt1)->next;
             (*pt1)->next = t2;
-            if (!(*pt1)->next || !(*pt1)->next->next) break;
+            if (!(*pt1)->next->next || !(*pt1)->next->next->next) break;
             pt1 = &(*pt1)->next->next;
             t2 = (*pt1);
         }
