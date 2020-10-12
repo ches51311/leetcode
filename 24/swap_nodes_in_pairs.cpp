@@ -11,16 +11,15 @@ class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
         if (!head || !head->next) return head;
-        ListNode **pp = &head;
-        ListNode *p;
-        while(*pp && (*(*pp)).next ){
-            p = (*pp);
-            (*pp) = (*p).next;
-            // (*p).next = (*(*pp)).next;
-            (*p).next = (*(*p).next).next;
-            (*(*pp)).next = p;
-            // (*(*p).next).next = p;
-            pp = &(*(*(*pp)).next).next;
+        ListNode **pt1 = &head;
+        ListNode *t2 = (*pt1);
+        while(true){
+            *pt1 = (*pt1)->next;
+            t2->next = (*pt1)->next;
+            (*pt1)->next = t2;
+            if (!(*pt1)->next || !(*pt1)->next->next) break;
+            pt1 = &(*pt1)->next->next;
+            t2 = (*pt1);
         }
         return head;
     }
