@@ -7,7 +7,7 @@ function compiling
     files=(`find . -iname "*.cpp"`)
     if [ ! -z ${files[0]} ];then
       echo compiling $d$(basename ${files[0]})
-      g++ -std=c++11 ${files[0]} -o ${files[0]%%.cpp}
+      g++ -I ../include/ -std=c++11 ${files[0]} -o ${files[0]%%.cpp}
       if [ $? != 0 ]; then
         echo ${f} compile failed!!
         exit
