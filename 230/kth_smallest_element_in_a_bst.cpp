@@ -5,16 +5,16 @@ public:
     int kthSmallest(TreeNode* root, int k) {
         cnt = 0;
         this->k = k;
-        postorderTraversal(root);
+        inorderTraversal(root);
         return ans;
     }
 private:
-    void postorderTraversal(TreeNode* root){
+    void inorderTraversal(TreeNode* root){
         if (!root || cnt == k) return;
-        postorderTraversal(root->left);
+        inorderTraversal(root->left);
         cnt = cnt + 1;
         if (cnt == k) ans = root->val;
-        postorderTraversal(root->right);
+        inorderTraversal(root->right);
     }
     int cnt;
     int k;
