@@ -6,6 +6,9 @@ SHELL := /bin/bash
 all:
 	source cmd.sh && compiling
 
+single-%:
+	source cmd.sh && compiling $(patsubst single-%, %, $@)
+
 test:
 	source cmd.sh && testing
 

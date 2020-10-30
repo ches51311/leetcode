@@ -2,27 +2,30 @@
 
 function compiling
 {
+  single=$1/
   for d in `ls -d */ | sort -n`; do
-    pushd $d >> /dev/null
-    files=(`find . -iname "*.cpp"`)
-    if [ ! -z ${files[0]} ];then
-      echo compiling $d$(basename ${files[0]})
-      g++ -I ../include/ -std=c++11 ${files[0]} -o ${files[0]%%.cpp}
-      if [ $? != 0 ]; then
-        echo ${f} compile failed!!
-        exit
+    if [ $single = / ] || [ $d = $single ]; then
+      pushd $d >> /dev/null
+      files=(`find . -iname "*.cpp"`)
+      if [ ! -z ${files[0]} ];then
+        echo compiling $d$(basename ${files[0]})
+        g++ -I ../include/ -std=c++11 ${files[0]} -o ${files[0]%%.cpp}
+        if [ $? != 0 ]; then
+          echo ${f} compile failed!!
+          exit
+        fi
       fi
-    fi
-    files=(`find . -iname "*.c"`)
-    if [ ! -z ${files[0]} ];then
-      echo compiling $d$(basename ${files[0]})
-      gcc ${files[0]} -o ${files[0]%%.c}
-      if [ $? != 0 ]; then
-        echo ${f} compile failed!!
-        exit
+      files=(`find . -iname "*.c"`)
+      if [ ! -z ${files[0]} ];then
+        echo compiling $d$(basename ${files[0]})
+        gcc ${files[0]} -o ${files[0]%%.c}
+        if [ $? != 0 ]; then
+          echo ${f} compile failed!!
+          exit
+        fi
       fi
+      popd > /dev/null
     fi
-    popd > /dev/null
   done
 }
 

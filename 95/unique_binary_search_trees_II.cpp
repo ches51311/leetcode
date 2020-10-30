@@ -38,7 +38,7 @@ int main()
   Solution s;
   std::vector<TreeNode*> ans = s.generateTrees(3);
   for (int i=0; i<ans.size(); i++){
-    pretraversal(ans[i]);
+    levelTraversal(ans[i]);
     std::cout << std::endl;
   }
   return 0;
