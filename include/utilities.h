@@ -38,3 +38,12 @@ void levelTraversal(TreeNode* root)
     }
 }
 
+void printVecVec(std::vector<std::vector<int>> &A)
+{
+    for (auto a1 : A){
+        for (auto a2 : a1){
+            std::cout << a2 << ", ";
+        }
+        std::cout << std::endl;
+    }
+}
