@@ -3,7 +3,10 @@
 
 void preTraversal(TreeNode* p)
 {
-    if (!p) return;
+    if (!p) {
+      std::cout << "null" << ", ";
+      return;
+    }
     std::cout << p->val << ", ";
     preTraversal(p->left);
     preTraversal(p->right);
@@ -11,7 +14,10 @@ void preTraversal(TreeNode* p)
 
 void inTraversal(TreeNode* p)
 {
-    if (!p) return;
+    if (!p) {
+      std::cout << "null" << ", ";
+      return;
+    }
     inTraversal(p->left);
     std::cout << p->val << ", ";
     inTraversal(p->right);
@@ -19,7 +25,10 @@ void inTraversal(TreeNode* p)
 
 void postTraversal(TreeNode* p)
 {
-    if (!p) return;
+    if (!p) {
+      std::cout << "null" << ", ";
+      return;
+    }
     postTraversal(p->left);
     postTraversal(p->right);
     std::cout << p->val << ", ";
@@ -33,8 +42,10 @@ void levelTraversal(TreeNode* root)
     {
         TreeNode* p = q.front(); q.pop();
         std::cout << p->val << ", ";
-        if (p->left)  q.push(p->left);
-        if (p->right) q.push(p->right);
+        if (p->left) {q.push(p->left);}
+        else {std::cout << "null" << ", ";}
+        if (p->right) {q.push(p->right);}
+        else {std::cout << "null" << ", ";}
     }
 }
 

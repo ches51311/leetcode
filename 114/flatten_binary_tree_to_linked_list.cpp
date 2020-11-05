@@ -5,21 +5,24 @@ class Solution {
 public:
     void flatten(TreeNode* root) {
         if (!root) return;
-        target = new TreeNode(root->val);
-        TreeNode *head = target;
+        q = std::queue<TreeNode*>();  
         helper(root);
-        root->left = NULL;
-        root->right = head->right->right;
+        q.pop();
+        while(!q.empty()){
+            root->left = NULL;
+            root->right = q.front();
+            q.pop();
+            root = root->right;
+        }
     }
 private:
     void helper(TreeNode* root){
         if (!root) return;
-        target->right = new TreeNode(root->val);
-        target = target->right;
+        q.push(root);
         helper(root->left);
         helper(root->right);
     }
-    TreeNode *target;
+    std::queue<TreeNode*> q;
 };
 
 int main()
