@@ -65,15 +65,10 @@ void createTree(std::vector<std::string> &v, int pos, TreeNode** start)
     if (pos > v.size()) return;
     std::string st = v[pos-1];
     if (st == "null") return;
-    int n = std::stoi(st);
-    *start = new TreeNode(n);
+    *start = new TreeNode(std::stoi(st));
 
-    //int m = std::floor(std::log2(pos));
-    int lp = pos*2;
-    int rp = lp + 1;
-
-    createTree(v, lp, &(*start)->left);
-    createTree(v, rp, &(*start)->right);
+    createTree(v, pos*2, &(*start)->left);
+    createTree(v, pos*2+1, &(*start)->right);
 
 }
 
